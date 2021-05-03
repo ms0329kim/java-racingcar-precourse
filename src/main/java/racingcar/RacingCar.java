@@ -1,6 +1,6 @@
 package racingcar;
 
-public class RacingCar {
+public class RacingCar implements Comparable<RacingCar> {
     private final static int RACING_GO_VALUE = 3;
 
     private String name;
@@ -21,6 +21,10 @@ public class RacingCar {
         return name;
     }
 
+    public int getCountOfGo() {
+        return countOfGo;
+    }
+
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();
@@ -37,4 +41,14 @@ public class RacingCar {
         return sb.toString();
     }
 
+    @Override
+    public int compareTo(RacingCar racingCar) {
+        if (this.countOfGo < racingCar.getCountOfGo()) {
+            return 1;
+        }
+        if (this.countOfGo > racingCar.getCountOfGo()) {
+            return -1;
+        }
+        return 0;
+    }
 }
