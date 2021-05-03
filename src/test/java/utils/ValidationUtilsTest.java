@@ -16,4 +16,13 @@ public class ValidationUtilsTest {
         assertThat(ValidationUtils.validName("abcde")).isTrue();
         assertThat(ValidationUtils.validName("")).isFalse();
     }
+
+    @Test
+    @DisplayName("0 ~ 9 사이 랜덤값 발생 기능")
+    void validateNumber() {
+        assertThat(ValidationUtils.validNumber(10)).isFalse();
+        assertThat(ValidationUtils.validNumber(9)).isTrue();
+        assertThat(ValidationUtils.validNumber(0)).isTrue();
+
+    }
 }
