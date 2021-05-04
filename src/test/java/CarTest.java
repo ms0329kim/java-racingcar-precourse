@@ -18,8 +18,7 @@ public class CarTest {
 		String carName = "test";
 		Car car = new Car(carName, DEFAULT_POSITION);
 		car.move();
-		System.out.println(car.score);
-		if(car.score >= 4) {
+		if (car.score >= car.POSSIBLE_MOVE_SCORE) {
 			assertThat(car.position).isEqualTo(1);
 		} else {
 			assertThat(car.position).isEqualTo(0);

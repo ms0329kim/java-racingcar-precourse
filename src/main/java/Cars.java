@@ -1,10 +1,9 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class Cars {
-	public static List cars = new ArrayList();
+	public static List<Car> cars = new ArrayList();
 	public Cars(String carNames) {
 		List tempCarName = Arrays.asList(carNames.split(","));
 
@@ -14,7 +13,19 @@ public class Cars {
 		}
 	}
 
+	public Cars() {
+
+	}
+
+	public List<Car> getCars() {
+		return this.cars;
+	}
+
 	public int carsNumber() {
 		return cars.size();
+	}
+
+	public void addCar(Car winnerCar) {
+		this.cars.add(winnerCar);
 	}
 }
