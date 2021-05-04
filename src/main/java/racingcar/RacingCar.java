@@ -1,5 +1,8 @@
 package racingcar;
 
+import utils.NumberUtils;
+import utils.ValidationUtils;
+
 public class RacingCar implements Comparable<RacingCar> {
     private final static int RACING_GO_VALUE = 3;
 
@@ -11,12 +14,6 @@ public class RacingCar implements Comparable<RacingCar> {
         this.countOfGo = 0;
     }
 
-    public void play(int number) {
-        if (number > RACING_GO_VALUE) {
-            countOfGo++;
-        }
-    }
-
     public String getName() {
         return name;
     }
@@ -25,11 +22,27 @@ public class RacingCar implements Comparable<RacingCar> {
         return countOfGo;
     }
 
+    public void play() {
+        int randomNumber = NumberUtils.randomNumber();
+        while (!ValidationUtils.validNumber(randomNumber)) {
+            randomNumber = NumberUtils.randomNumber();
+        }
+
+        if (randomNumber > RACING_GO_VALUE) {
+            countOfGo++;
+        }
+    }
+
+    public void play(int number) {
+        if (number > RACING_GO_VALUE) {
+            countOfGo++;
+        }
+    }
+
     @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer();
-        sb.append(this.name);
-        sb.append(" : ");
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.name).append(" : ");
 
         if (countOfGo == 0) {
             return sb.toString();
@@ -38,6 +51,7 @@ public class RacingCar implements Comparable<RacingCar> {
         for (int i = 0; i < countOfGo; i++) {
             sb.append("-");
         }
+
         return sb.toString();
     }
 
@@ -46,9 +60,11 @@ public class RacingCar implements Comparable<RacingCar> {
         if (this.countOfGo < racingCar.getCountOfGo()) {
             return 1;
         }
+
         if (this.countOfGo > racingCar.getCountOfGo()) {
             return -1;
         }
+
         return 0;
     }
 }

@@ -23,9 +23,21 @@ public class RacingGame {
         return racingCarList;
     }
 
+    public void play(int move) {
+        for (int i = 0; i < move; i++) {
+            result();
+        }
+    }
+
     public void play(int move, List<Integer> numbers) {
         for (int i = 0; i < move; i++) {
             result(i * racingCarList.size(), numbers);
+        }
+    }
+
+    private void result() {
+        for (RacingCar racingCar : racingCarList) {
+            racingCar.play();
         }
     }
 
@@ -40,7 +52,6 @@ public class RacingGame {
 
         List<String> winnerList = new ArrayList<>();
         int maxCount = racingCarList.get(0).getCountOfGo();
-
         String addString = racingCarList.get(0).getName();
         int i = 0;
 
