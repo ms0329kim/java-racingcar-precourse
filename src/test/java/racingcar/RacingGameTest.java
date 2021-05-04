@@ -85,4 +85,18 @@ public class RacingGameTest {
         assertThat(String.join(", ", actual)).isEqualTo("aaa, bbb, ccc");
     }
 
+    @Test
+    @DisplayName("게임_진행_참가자1")
+    void 게임_진행_참가자1() {
+        expected = new ArrayList<>();
+        expected.add("aaa");
+        RacingGame racingGame = new RacingGame(expected);
+        move = 3;
+
+        racingGame.play(move, Arrays.asList(5, 5, 5));
+        List<String> actual = racingGame.getWinner();
+
+        assertThat(String.join(", ", actual)).isEqualTo("aaa");
+    }
+
 }

@@ -50,23 +50,39 @@ public class RacingGame {
     }
 
     public List<String> getWinner() {
-        Collections.sort(racingCarList);
+        if (racingCarList.size() == 1) {
+            return getWinnerInParticipant();
+        }
 
-        List<String> winnerList = new ArrayList<>();
+        return getWinnerInParticipants();
+    }
+
+    private List<String> getWinnerInParticipant() {
+        List<String> winners = new ArrayList<>();
+        winners.add(racingCarList.get(0).getName());
+        return winners;
+    }
+
+    private List<String> getWinnerInParticipants() {
+        Collections.sort(racingCarList);
+        List<String> winners = new ArrayList<>();
+
         int maxCount = racingCarList.get(0).getCountOfGo();
-        String addString = racingCarList.get(0).getName();
+        String addString;
         int i = 0;
 
         do {
-            winnerList.add(addString);
-            addString = checkCoWin(maxCount, racingCarList.get(++i));
-        } while (i < (racingCarList.size() - 1) && addString.length() > 0);
+            addString = checkCoWin(maxCount, racingCarList.get(i++));
+            addWinner(winners, addString);
+        } while (addString.length() > 0 && i < racingCarList.size());
 
-        if (!addString.isEmpty()) {
-            winnerList.add(addString);
+        return winners;
+    }
+
+    private void addWinner(List<String> winners, String addString) {
+        if (addString.length() > 0) {
+            winners.add(addString);
         }
-
-        return winnerList;
     }
 
     public String checkCoWin(int maxCount, RacingCar compareRacingCar) {
