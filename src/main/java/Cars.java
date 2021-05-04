@@ -8,7 +8,10 @@ public class Cars {
 	public Cars(String carNames) {
 		List tempCarName = Arrays.asList(carNames.split(","));
 
-		IntStream.range(0, tempCarName.size()).forEach(i -> cars.add(new Car(tempCarName.get(i).toString())));
+		int bound = tempCarName.size();
+		for (int i = 0; i < bound; i++) {
+			cars.add(new Car(tempCarName.get(i).toString(), 0 ));
+		}
 	}
 
 	public int carsNumber() {
