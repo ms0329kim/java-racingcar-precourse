@@ -13,9 +13,14 @@ public class RacingGameMain {
         String inputNames = scanner.nextLine();
         List<String> splitNames = StringUtils.split(inputNames);
 
+        if (splitNames.size() == 0) {
+            System.out.println("이름이 입력되지 않았습니다. 게임을 종료합니다.");
+            return;
+        }
+
         for (int i = 0; i < splitNames.size(); i++) {
             if (!ValidationUtils.validName(splitNames.get(i))) {
-                System.out.println("조건이 틀렸습니다. 게임을 종료합니다.");
+                System.out.println("설정할 수 있는 이름의 조건을 다시 확인해주십시오. 게임을 종료합니다.");
                 return;
             }
         }

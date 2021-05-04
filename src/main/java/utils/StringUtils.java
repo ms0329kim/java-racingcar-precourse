@@ -6,7 +6,7 @@ import java.util.List;
 
 public class StringUtils {
     public static List<String> split(String originString) {
-        if (originString.isEmpty()) {
+        if (originString.trim().isEmpty()) {
             return new ArrayList<>();
         }
 

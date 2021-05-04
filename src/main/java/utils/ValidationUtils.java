@@ -6,7 +6,7 @@ public class ValidationUtils {
     private static final int MAX_LENGTH = 5;
 
     public static boolean validName(String name) {
-        return !name.isEmpty() && name.length() <= MAX_LENGTH;
+        return !name.trim().isEmpty() && name.length() <= MAX_LENGTH;
     }
 
     public static boolean validNumber(int number) {

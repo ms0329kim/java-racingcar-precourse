@@ -15,6 +15,7 @@ public class ValidationUtilsTest {
         assertThat(ValidationUtils.validName("abcdef")).isFalse();
         assertThat(ValidationUtils.validName("abcde")).isTrue();
         assertThat(ValidationUtils.validName("")).isFalse();
+        assertThat(ValidationUtils.validName(" ")).isFalse();
     }
 
     @Test
