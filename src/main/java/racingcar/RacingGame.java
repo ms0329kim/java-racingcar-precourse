@@ -26,6 +26,7 @@ public class RacingGame {
     public void play(int move) {
         for (int i = 0; i < move; i++) {
             result();
+            System.out.println();
         }
     }
 
@@ -38,6 +39,7 @@ public class RacingGame {
     private void result() {
         for (RacingCar racingCar : racingCarList) {
             racingCar.play();
+            System.out.println(racingCar.toString());
         }
     }
 
